@@ -1,13 +1,11 @@
-import Link from 'next/link';
-
 export default function Home() {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div className="container-fluid">
-          <Link className="navbar-brand" href="/" style={{ width: '10%' }}>
+          <a className="navbar-brand" href="/" style={{ width: '10%' }}>
             <img src='./logo.png' alt='logo' style={{ width: '100%' }} />
-          </Link>
+          </a>
           <button className="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

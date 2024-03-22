@@ -1,19 +1,5 @@
 "use client"
-import { useEffect } from 'react';
-import Modal from 'bootstrap/js/dist/modal';
 export default function HeroSection(){
-    var myModal
-    useEffect(() => {
-        const myModalElement = document.getElementById('exampleModal');
-        myModal = new Modal(myModalElement);
-    }, [])
-    const handleClick = () => {
-        myModal.show();
-    }
-    const handleClose=()=>{
-        console.log("close this modal");
-        myModal.hide();
-    }
 return (
     <>
     <div className='container'>

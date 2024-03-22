@@ -1,4 +1,3 @@
-import Head from "next/head";
 import "./globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 export const metadata = {
@@ -9,11 +8,6 @@ export const metadata = {
 export default function RootLayout({ children, herosection, about, location, highlight, price, amenities, floorplan, footer, gallery, footerend, callbutton }) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" href="/favicon-16x16.png" sizes="16x16" />
-      </Head>
       <body >
         {children}
         {herosection}

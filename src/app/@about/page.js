@@ -1,6 +1,5 @@
 "use client"
-import { useEffect, useState } from "react"
-import Modal from 'bootstrap/js/dist/modal';
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image";
 import axios from "axios";
 
@@ -8,6 +7,7 @@ export default function About() {
     const [loader, setLoader] = useState(false);
     const [input, setinput] = useState({});
     var myModal;
+    const myModalRef = useRef(null);
     const formvalue = (e) => {
         setinput({ ...input, [e.target.name]: e.target.value });
     }
@@ -23,22 +23,18 @@ export default function About() {
                 alert(response.data.result);
                 setLoader(false);
                 window.open('https://drive.google.com/file/d/1HJdtWyO19_2PeV17iMyWETKS3iYw_I8M/view?usp=drive_link', '_blank');
-                handleClose();
 
             });
 
         }
     }
     useEffect(() => {
-        const myModalElement = document.getElementById('exampleModal');
-        myModal = new Modal(myModalElement);
+        if (typeof window !== "undefined") {
+            const Modal = require('bootstrap/js/dist/modal');
+            myModalRef.current = new Modal(document.getElementById('exampleModal'));
+        }
     }, [])
-    const handleClick = () => {
-        myModal.show();
-    }
-    const handleClose = () => {
-        myModal.hide();
-    }
+    
     return (
         <div className='container' id="About">
             <div className='row'>
@@ -56,10 +52,10 @@ export default function About() {
                         </div>
                         <div className='row'>
                             <div className='col-md-5 col-6'>
-                                <button className='buttoncbs' onClick={handleClick}>Download Brochure</button>
+                                <button className='buttoncbs' data-bs-toggle="modal" data-bs-target="#exampleModal">Download Brochure</button>
                             </div>
                             <div className='col-md-5 col-5'>
-                                <button className='buttoncbs' onClick={handleClick} style={{ width: "100px" }}>Call Now!</button>
+                                <button className='buttoncbs' data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ width: "100px" }}>Call Now!</button>
                             </div>
                         </div>
                     </div>
@@ -108,7 +104,7 @@ export default function About() {
                             }
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="buttoncbs" style={{ backgroundColor: "red", width: "70px" }} onClick={handleClose}>Close</button>
+                            <button type="button" className="buttoncbs" style={{ backgroundColor: "red", width: "70px" }}  data-bs-dismiss="modal" aria-label="Close">Close</button>
                             <button type="submit" className="buttoncbs" onClick={submitform} style={{ width: "200px" }}>Download Brochure</button>
                         </div>
                     </div>
