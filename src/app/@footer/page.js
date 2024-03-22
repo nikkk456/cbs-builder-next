@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import axios from "axios";
 export default function Footer() {
   const [loader, setLoader] = useState(false);
   const [input, setinput] = useState({});
@@ -14,7 +15,7 @@ export default function Footer() {
       alert("Kindly fill all the details");
     } else {
       setLoader(true);
-      axios.post("http://localhost:0080/cbsbuilderapi/leads.php", data_to).then((response) => {
+      axios.post("https://cbsbuilder.in/cbsbuilderapi/leads.php", data_to).then((response) => {
         alert(response.data.result);
         setLoader(false);
       });

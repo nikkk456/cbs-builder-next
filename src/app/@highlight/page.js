@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 export default function Highlight() {
     return (
         <div className='container mt-3'>
             <div className='row'>
                 <div className='col-md-5 mt-3'>
-                    <img src='./Slide15.jpg' alt='luxury floor' style={{ width: "100%", borderRadius: "20px" }}></img>
+                    <Image src='/Slide15.jpg' alt='luxury floor' width={500} height={500} style={{ width: "100%", height:"100%", borderRadius: "20px" }}></Image>
                 </div>
                 <div className='col-md-7'>
                     <div className='row mt-3'>

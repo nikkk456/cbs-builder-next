@@ -1,6 +1,8 @@
 "use client"
 import { useEffect, useState } from "react"
 import Modal from 'bootstrap/js/dist/modal';
+import Image from "next/image";
+import axios from "axios";
 
 export default function About() {
     const [loader, setLoader] = useState(false);
@@ -17,10 +19,11 @@ export default function About() {
             alert("Kindly fill all the details");
         } else {
             setLoader(true);
-            axios.post("http://localhost:0080/cbsbuilderapi/contact_popup.php", data_to).then((response) => {
+            axios.post("https://cbsbuilder.in/cbsbuilderapi/contact_popup.php", data_to).then((response) => {
                 alert(response.data.result);
                 setLoader(false);
                 window.open('https://drive.google.com/file/d/1HJdtWyO19_2PeV17iMyWETKS3iYw_I8M/view?usp=drive_link', '_blank');
+                handleClose();
 
             });
 
@@ -33,8 +36,7 @@ export default function About() {
     const handleClick = () => {
         myModal.show();
     }
-    const handleClose=()=>{
-        console.log("close this modal");
+    const handleClose = () => {
         myModal.hide();
     }
     return (
@@ -43,7 +45,9 @@ export default function About() {
                 <h2 className='text-center'><span style={{ width: "10%", borderBottom: "2px double #3a5c5c" }}>About Us</span></h2>
             </div>
             <div className='row'>
-                <div className='col-md-5'><img src='./Aboutus.png' alt='cbs_building' style={{ width: "100%" }}></img></div>
+                <div className='col-md-5'>
+                    <Image src='/Aboutus.png' width={100} height={100} alt='cbs_building' style={{ width: "100%", height: "100%" }}></Image>
+                </div>
                 <div className='col-md-7 '>
                     <div className='container'>
                         <div className='row'><p>
@@ -55,7 +59,7 @@ export default function About() {
                                 <button className='buttoncbs' onClick={handleClick}>Download Brochure</button>
                             </div>
                             <div className='col-md-5 col-5'>
-                                <button className='buttoncbs' onClick={handleClick} style={{width:"100px"}}>Call Now!</button>
+                                <button className='buttoncbs' onClick={handleClick} style={{ width: "100px" }}>Call Now!</button>
                             </div>
                         </div>
                     </div>
